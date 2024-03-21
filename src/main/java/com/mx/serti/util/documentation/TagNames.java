@@ -6,6 +6,7 @@ public class TagNames {
         throw new IllegalStateException("Utility class");
     }
 
-    public static final String REQUEST = "requests";
+    public static final String URI = "uris";
+    public static final String POKE_API = "poke-api";
 
 }
