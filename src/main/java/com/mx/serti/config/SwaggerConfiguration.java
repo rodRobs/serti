@@ -12,7 +12,7 @@ public class SwaggerConfiguration {
     @Bean
     public GroupedOpenApi publicApi() {
         String[] paths = {
-                "/*"
+                "/requests/**"
         };
         return GroupedOpenApi.builder().group("serti").pathsToMatch(paths).build();
     }
