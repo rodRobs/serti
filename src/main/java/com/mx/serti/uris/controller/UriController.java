@@ -1,7 +1,7 @@
-package com.mx.serti.requests.controller;
+package com.mx.serti.uris.controller;
 
-import com.mx.serti.requests.dto.RequestDTO;
-import com.mx.serti.requests.service.RequestService;
+import com.mx.serti.uris.dto.UriDTO;
+import com.mx.serti.uris.service.UriService;
 import com.mx.serti.util.constants.Entity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -22,32 +22,32 @@ import static com.mx.serti.util.documentation.ApiDescriptions.*;
 
 import java.util.List;
 
-@Tag(name = REQUEST, description = REQUEST_DESCRIPTION)
+@Tag(name = URI, description = URI_DESCRIPTION)
 @RestController
-@RequestMapping("/requests")
-public class RequestController {
+@RequestMapping("/uris")
+public class UriController {
 
     @Autowired
-    RequestService requestService;
+    UriService requestService;
 
     @GetMapping
-    @Operation(summary = HTTP_FIND_ALL_OPERATION, description = HTTP_FIND_ALL_OPERATION + Entity.OF_REQUESTS)
+    @Operation(summary = HTTP_FIND_ALL_OPERATION, description = HTTP_FIND_ALL_OPERATION + Entity.OF_URIS)
     @ApiResponses(value = {
             @ApiResponse(responseCode = HTTP_CODE_OK, description = HTTP_DESCRIPTION_OK),
             @ApiResponse(responseCode = HTTP_CODE_ERROR_INTERNAL_SERVER, description = HTTP_DESCRIPTION_ERROR_INTERNAL_SERVER)
     })
-    public ResponseEntity<List<RequestDTO>> findAll() {
+    public ResponseEntity<List<UriDTO>> findAll() {
         return new ResponseEntity<>(requestService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = HTTP_FIND_ALL_OPERATION, description = HTTP_FIND_ALL_OPERATION + Entity.OF_REQUESTS)
+    @Operation(summary = HTTP_FIND_ALL_OPERATION, description = HTTP_FIND_ALL_OPERATION + Entity.OF_URIS)
     @ApiResponses(value = {
             @ApiResponse(responseCode = HTTP_CODE_OK, description = HTTP_DESCRIPTION_OK),
             @ApiResponse(responseCode = HTTP_CODE_NOT_FOUND, description = HTTP_DESCRIPTION_NOT_FOUND),
             @ApiResponse(responseCode = HTTP_CODE_ERROR_INTERNAL_SERVER, description = HTTP_DESCRIPTION_ERROR_INTERNAL_SERVER)
     })
-    public ResponseEntity<RequestDTO> findById(@PathVariable @Parameter(name = "id", description = "Identificador del registro") int id) {
+    public ResponseEntity<UriDTO> findById(@PathVariable @Parameter(name = "id", description = "Identificador del registro") int id) {
         return new ResponseEntity<>(requestService.findById(id), HttpStatus.OK);
     }
 
