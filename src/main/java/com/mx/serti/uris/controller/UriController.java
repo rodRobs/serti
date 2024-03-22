@@ -22,7 +22,7 @@ import static com.mx.serti.util.documentation.ApiDescriptions.*;
 
 import java.util.List;
 
-@Tag(name = URI, description = URI_DESCRIPTION)
+@Tag(name = URI_API, description = URI_DESCRIPTION)
 @RestController
 @RequestMapping("/uris")
 public class UriController {
