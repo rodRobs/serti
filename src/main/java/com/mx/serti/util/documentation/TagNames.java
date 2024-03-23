@@ -9,6 +9,6 @@ public class TagNames {
     public static final String URI_API = "uris";
     public static final String POKE_API = "poke-api";
     public static final String DATA_TYPE_API = "data-types";
-    public static final String DATA_GENERIC = "data-generics";
+    public static final String DATA_GENERIC_API = "data-generics";
 
 }

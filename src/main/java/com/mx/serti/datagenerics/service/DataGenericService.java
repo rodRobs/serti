@@ -14,6 +14,8 @@ public interface DataGenericService {
 
     DataGenericDTO save(DataGenericDTO dataGenericDTO);
 
+    List<DataGenericDTO> saveList(Long id, List<DataGenericDTO> dataGenericDTO);
+
     DataGenericDTO update(Long id, DataGenericDTO dataGenericDTO);
 
     void deleteById(Long id);

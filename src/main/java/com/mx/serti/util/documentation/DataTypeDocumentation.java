@@ -14,4 +14,7 @@ public class DataTypeDocumentation {
     public static final String DATY_NAME_EXAMPLE_VALUE = "Habilidad";
     public static final String DATY_NAME_DESCRIPTION = "Nombre del registro de tipo de información";
 
+    public static final String DATA_TYPE = "dataType";
+    public static final String DATA_TYPE_DESCRIPTION = "Tipo de dato del registro";
+
 }

@@ -1,5 +1,6 @@
 package com.mx.serti.datagenerics.service;
 
+import com.mx.serti.datatypes.dto.DataTypeDTO;
 import com.mx.serti.exceptions.NotFoundException;
 import com.mx.serti.util.singletons.SingletonValidateFunctions;
 import com.mx.serti.util.singletons.SingletonValidatorConstraint;
@@ -30,7 +31,12 @@ public class DataGenericServiceImpl implements DataGenericService {
 
     @Override
     public List<DataGenericDTO> findAll() {
-        return dataGenericRepository.findAll().stream().map(DataGenericDTO::new).toList();
+        List<DataGeneric> dataGenerics = dataGenericRepository.findAll();
+        return entityListToDtoList(dataGenerics);
+    }
+
+    public List<DataGenericDTO> entityListToDtoList(List<DataGeneric> dataGenerics) {
+        return dataGenerics.stream().map(DataGenericDTO::new).toList();
     }
 
     @Override
@@ -66,6 +72,16 @@ public class DataGenericServiceImpl implements DataGenericService {
         DataGeneric dataGeneric = dtoToEntity(dataGenericDTO);
         DataGeneric dataGenericSaved = dataGenericRepository.save(dataGeneric);
         return entityToDTO(dataGenericSaved);
+    }
+
+    @Override
+    public List<DataGenericDTO> saveList(Long id, List<DataGenericDTO> dataGenericDTOs) {
+        singletonValidatorConstraint.validateList(dataGenericDTOs);
+        DataTypeDTO dataTypeDTO = DataTypeDTO.builder().datyId(id).build();
+        dataGenericDTOs.forEach(dg -> dg.setDataType(dataTypeDTO));
+        List<DataGeneric> dataGenerics = dataGenericDTOs.stream().map(DataGeneric::new).toList();
+        List<DataGeneric> dataGenericsSaved = dataGenericRepository.saveAll(dataGenerics);
+        return entityListToDtoList(dataGenericsSaved);
     }
 
     public DataGeneric dtoToEntity(DataGenericDTO dataGeneric) {

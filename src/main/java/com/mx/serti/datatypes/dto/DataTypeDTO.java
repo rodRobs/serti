@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class DataTypeDTO {
 
+    @Schema(name = DATY_ID, example = DATY_ID_EXAMPLE_VALUE, description = DATY_ID_DESCRIPTION)
     private Long datyId;
 
     @NotNull(message = DATY_NAME_DESCRIPTION + IS_REQUIRED)

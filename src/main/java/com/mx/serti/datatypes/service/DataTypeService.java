@@ -11,6 +11,8 @@ public interface DataTypeService {
 
     DataTypeDTO save(DataTypeDTO dataTypeDTO);
 
+    List<DataTypeDTO> saveList(List<DataTypeDTO> dataTypeDTOs);
+
     DataTypeDTO update(Long id, DataTypeDTO dataTypeDTO);
 
     void deleteById(Long id);

@@ -48,7 +48,7 @@ public class PokeApiController {
     }
 
     @GetMapping("/evolution")
-    @Operation(summary = HTTP_FIND_BY_ID_OPERATION, description = HTTP_FIND_BY_ID_OPERATION + HTTP_FIND_EVOLUTION_CHAIN_OF_POKEMON)
+    @Operation(summary = HTTP_FIND_EVOLUTION_CHAIN_OF_POKEMON_OPERATION, description =  HTTP_FIND_EVOLUTION_CHAIN_OF_POKEMON_OPERATION)
     @ApiResponses(value = {
             @ApiResponse(responseCode = HTTP_CODE_OK, description = HTTP_DESCRIPTION_OK),
             @ApiResponse(responseCode = HTTP_CODE_ERROR_INTERNAL_SERVER, description = HTTP_DESCRIPTION_ERROR_INTERNAL_SERVER)

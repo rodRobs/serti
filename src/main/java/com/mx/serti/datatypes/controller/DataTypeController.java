@@ -57,6 +57,16 @@ public class DataTypeController {
         return new ResponseEntity<>(dataTypeService.save(dataTypeDTO), HttpStatus.OK);
     }
 
+    @PostMapping("/list")
+    @Operation(summary = HTTP_SAVE_LIST_OPERATION, description = HTTP_SAVE_LIST_OPERATION + DATA_TYPE)
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = HTTP_CODE_CREATED, description = HTTP_DESCRIPTION_CREATED),
+            @ApiResponse(responseCode = HTTP_CODE_ERROR_INTERNAL_SERVER, description = HTTP_DESCRIPTION_ERROR_INTERNAL_SERVER)
+    })
+    public ResponseEntity<List<DataTypeDTO>> saveList(@RequestBody List<DataTypeDTO> dataTypeDTOs) {
+        return new ResponseEntity<>(dataTypeService.saveList(dataTypeDTOs), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     @Operation(summary = HTTP_UPDATE_OPERATION, description = HTTP_UPDATE_OPERATION + DATA_TYPE)
     @ApiResponses(value = {

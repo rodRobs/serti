@@ -1,5 +1,7 @@
 package com.mx.serti.datagenerics.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +12,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 import com.mx.serti.datatypes.entity.DataType;
+import com.mx.serti.datatypes.dto.DataTypeDTO;
 import com.mx.serti.datagenerics.dto.DataGenericDTO;
 
 @Entity
@@ -25,8 +28,8 @@ public class DataGeneric implements Serializable {
     @Column(name = "dage_id")
     private Long dageId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "daty_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "daty_id", referencedColumnName = "daty_id", nullable = false)
     private DataType dataType;
 
     @Column(name = "dage_name", nullable = false, length = 50, unique = true)
@@ -38,8 +41,19 @@ public class DataGeneric implements Serializable {
     public DataGeneric(DataGenericDTO dataGeneric) {
         this.setDageId(dataGeneric.getDageId());
         this.setDageName(dataGeneric.getDageName());
-        this.setDageName(dataGeneric.getDageName());
+        this.setDataType(dataGeneric.getDataType());
         this.setDageUrl(dataGeneric.getDageUrl());
+    }
+
+    @JsonProperty
+    public void setDataType(DataType dataType) {
+        this.dataType = dataType;
+    }
+
+
+    @JsonIgnore
+    public void setDataType(DataTypeDTO dataTypeDTO) {
+        this.dataType = DataType.builder().datyId(dataTypeDTO.getDatyId()).build();
     }
 
 }

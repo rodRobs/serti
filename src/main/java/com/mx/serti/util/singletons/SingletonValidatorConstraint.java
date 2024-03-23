@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.List;
 import java.util.Set;
 
 public class SingletonValidatorConstraint {
@@ -34,6 +35,12 @@ public class SingletonValidatorConstraint {
         }
         if (containError) {
             throw new BadRequestException(ErrorMessages.VALUES_NULL + errorMessage);
+        }
+    }
+
+    public <T> void validateList(List<T> genericListDTO) {
+        for (T t : genericListDTO) {
+            this.validate(t);
         }
     }
 

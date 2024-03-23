@@ -29,7 +29,12 @@ public class DataTypeServiceImpl implements DataTypeService {
 
     @Override
     public List<DataTypeDTO> findAll() {
-        return dataTypeRepository.findAll().stream().map(DataTypeDTO::new).toList();
+        List<DataType> dataTypes = dataTypeRepository.findAll();
+        return entityListToDtoList(dataTypes);
+    }
+
+    public List<DataTypeDTO> entityListToDtoList(List<DataType> dataTypes) {
+        return dataTypes.stream().map(DataTypeDTO::new).toList();
     }
 
     @Override
@@ -59,6 +64,15 @@ public class DataTypeServiceImpl implements DataTypeService {
 
     public DataType dtoToEntity(DataTypeDTO dataType) {
         return new DataType(dataType);
+    }
+
+    @Override
+    @Transactional
+    public List<DataTypeDTO> saveList(List<DataTypeDTO> dataTypeDTOs) {
+        singletonValidatorConstraint.validateList(dataTypeDTOs);
+        List<DataType> dataTypes = dataTypeDTOs.stream().map(DataType::new).toList();
+        List<DataType> dataTypesSaved = dataTypeRepository.saveAll(dataTypes);
+        return entityListToDtoList(dataTypesSaved);
     }
 
     @Override
