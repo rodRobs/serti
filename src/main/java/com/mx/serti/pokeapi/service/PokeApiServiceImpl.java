@@ -32,7 +32,7 @@ public class PokeApiServiceImpl implements PokeApiService {
         SpecieDTO specieDTO = findSpecieByPokemonId(id);
         EvolutionDTO evolutionDTO = findEvolutionChainByUrl(specieDTO.getEvolutionChain().getUrl());
         specieDTO.setEvolution(evolutionDTO);
-        pokemonDTO.setSpecieDTO(specieDTO);
+        pokemonDTO.setSpecie(specieDTO);
         return pokemonDTO;
     }
 

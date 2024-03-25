@@ -15,5 +15,7 @@ public class Entity {
     public static final String OF_DATA_TYPES = " de tipos de información";
     public static final String DATA_GENERIC = " dato genérico";
     public static final String OF_DATA_GENERICS = " de datos genericos";
+    public static final String CHAIN_EVOLUTION = "cadena de evolución";
+    public static final String OF_CHAIN_EVOLUTIONS = "de cadenas de evolución";
 
 }

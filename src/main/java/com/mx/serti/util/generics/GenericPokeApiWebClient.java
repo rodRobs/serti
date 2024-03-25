@@ -10,10 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 @Slf4j
 public class GenericPokeApiWebClient {
@@ -39,10 +35,10 @@ public class GenericPokeApiWebClient {
     }
 
     public <T> T getObject(ParameterizedTypeReference<T> typeReference, String path) {
+        log.debug("HttpPokeApiWebClient::getObject {}, {}", typeReference, path);
         WebClientConnectionConfiguration webClientConnectionConfiguration = new WebClientConnectionConfiguration(webClientBuilder);
         WebClient webClient = webClientConnectionConfiguration.getWebClientConnection(path);
         return webClient.method(HttpMethod.GET).retrieve().bodyToMono(typeReference).block();
     }
-
 
 }

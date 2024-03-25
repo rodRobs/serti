@@ -7,6 +7,7 @@ public class ErrorMessages {
     }
 
     public static final String NOT_FOUND = "No se encontró %s con el id: ";
+    public static final String NOT_FOUND_BY_POKEMON = "No se encontró %s por el id: %s del pokemon";
 
     public static final String ID_NULL = "El identificador de la entidad a modificar esta vacío";
     public static final String ID_MISSMATCHS = "Los identificadores a modificar no coinciden, %s con %s";

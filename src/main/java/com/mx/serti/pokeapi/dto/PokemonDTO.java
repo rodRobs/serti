@@ -34,6 +34,6 @@ public class PokemonDTO {
     @Schema(name = SPRITES, example = SPRITES_EXAMPLE_VALUE, description = SPRITES_DESCRIPTION)
     private SpriteDTO sprites;
 
-    private SpecieDTO specieDTO;
+    private SpecieDTO specie;
 
 }
